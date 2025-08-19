@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>LogIn</title>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="img/images.png" alt="">
+            </div>
+            
+        </div>
+    </header>
+
+
+    <div class="sec_form">
+        <div class="form">
+            <h1>LogIn</h1>
+            <form id="regForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter Email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password" required>
+                
+                <div class="ch"> 
+                <input type="checkbox" id="check">
+                <label for="check" class="me">Remember Me</label>
+            </div>
+                <button type="submit" id="btn">Login</button>
+            </form>
+            <p class="message">Don't Have An Account? <a href="reg.html" target="_blank" id="reg">Register</a></p>
+        </div>
+    </div>
+
+
+
+    <script src="js/sign.js"></script>
+</body>
+</html>
