@@ -336,7 +336,7 @@ header .userinfo i{
     width: 20%;
     padding-left: 10px;
 }
-.inputs select option{
+.inputs select option:checked{
     padding: 10px;
-    /* background-color: #C3ACD0; */
+    background-color: #C3ACD0;
 }

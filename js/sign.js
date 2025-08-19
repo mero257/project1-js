@@ -21,7 +21,7 @@ btn.addEventListener('click', function (e) {
     else if (getemail.trim() === email.value.trim() && getpassword.trim ()=== password.value.trim()) {
         
         setTimeout(() => {
-            window.location = "indxe.html"
+            window.location = "index.html"
         }, 1500)
         
     }
