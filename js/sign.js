@@ -22,7 +22,7 @@ btn.addEventListener('click', function (e) {
         
         setTimeout(() => {
             window.location = "index.html"
-        }, 1500)
+        }, 100)
         
     }
     else{

@@ -15,8 +15,7 @@ btn.addEventListener('click',function(e){
         localStorage.setItem("secname",username2.value)
         localStorage.setItem("password",password.value)
         localStorage.setItem("email",email.value)
-        setTimeout(()=>{
+        alert("Account Created Sucssefuly")
             window.location="sign.html"
-        },1500)
     }
 })
