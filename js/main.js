@@ -3,9 +3,10 @@ let info = document.querySelector("#info")
 let userdata = document.querySelector("#username")
 if (localStorage.getItem("firstname")) {
     btns.style.display = "none"
-    info.style.display = "block"
-    userdata.innerHTML = "Hello  " + localStorage.getItem("firstname")
+    info.style.display = "flex"
+    userdata.innerHTML = localStorage.getItem("firstname").toLocaleUpperCase() + " " + localStorage.getItem("secname").toLocaleUpperCase()
 }
+
 
 let icon = document.querySelector(".icon-shopping")
 let num = document.querySelector("#numOfAdded")
@@ -17,7 +18,6 @@ icon.addEventListener('mouseleave', function (e) {
     e.preventDefault()
     num.style.transform = "translate(9px,-13px)"
 })
-
 let totalproducts = document.querySelector(".cards")
 let details = [
     {
@@ -213,8 +213,6 @@ let details = [
         clicked: false
     },
 ]
-
-
 function drawitems(items = details) {
     let x = items.map((item) => {
         return `
@@ -237,16 +235,16 @@ function drawitems(items = details) {
     totalproducts.innerHTML = x.join("");
 }
 drawitems();
-let select=document.querySelector("#select")
+let select = document.querySelector("#select")
 let search = document.querySelector(".search")
 search.addEventListener('input', function (e) {
     e.preventDefault()
     let value = search.value.trim().toLowerCase()
     let x = value === "" ? details : details.filter((item) => {
-        if(select.value.trim() === "Search by product name") {
+        if (select.value.trim() === "Search by product name") {
             return item.title.toLowerCase().includes(value)
         }
-        else if(select.value.trim() === "Search by category") {
+        else if (select.value.trim() === "Search by category") {
             return item.category.toLowerCase().includes(value)
         }
     })
@@ -261,22 +259,19 @@ search.addEventListener('input', function (e) {
         tryagain.addEventListener('click', function (e) {
             e.preventDefault()
             drawitems(details)
-            document.querySelector(".search").value=""
+            document.querySelector(".search").value = ""
         })
         return
     }
     drawitems(x)
-    
+
 })
-
-
 function move(c, id) {
     c.style.transform = "translateY(-7px)"
 }
 function origin(c, id) {
     c.style.transform = "translateY(0px)"
 }
-
 function add(button, id, clicked) {
     if (localStorage.getItem("email")) {
         let item = details.find(el => el.id === id);
@@ -299,10 +294,18 @@ function add(button, id, clicked) {
             item.clicked = false;
         }
         let c = button.closest(".c")
+        if(body.classList.contains("dark")){
+            c.style.boxShadow = "0 2px 10px rgba(255, 255, 255, .3)"
+        }
+        else
+        {
+            c.style.boxShadow = "0 2px 10px rgba(0, 0, 0, .1)"
+        }
+
         c.style.boxShadow = "none"
         c.style.transform = "translateY(-5px)"
         setTimeout(() => {
-            c.style.boxShadow = "1px 4px 15px  rgba(0, 0, 0, .5)"
+            c.style.boxShadow = "1px 4px 15px  rgba(0, 0, 0, .1)"
             c.style.transform = "translateY(-7px)"
         }, 200)
     }
@@ -313,7 +316,6 @@ function add(button, id, clicked) {
     }
     // عاوزه اغير حاجه لما يجي يضغط و يلاقي اني ضغطت قبل كده اصلا 
 }
-
 function addtofav(i, id, clicked) {
     if (localStorage.getItem("email")) {
         let item = details.find(el => el.id === id)
@@ -323,10 +325,9 @@ function addtofav(i, id, clicked) {
         c.style.boxShadow = "none"
         c.style.transform = "translateY(-5px)"
         setTimeout(() => {
-            c.style.boxShadow = "1px 4px 15px  rgba(0, 0, 0, .5)"
+            c.style.boxShadow = "1px 4px 15px  rgba(0, 0, 0, .1)"
             c.style.transform = "translateY(-7px)"
         }, 200)
-
     }
     else {
         setTimeout(() => {
@@ -335,8 +336,62 @@ function addtofav(i, id, clicked) {
     }
 }
 
-
-
-
-
-
+let h=document.querySelector(".header")
+let logoimg = document.querySelector(".logoimg")
+let mood = document.querySelector(".mood")
+let arrow = document.querySelector(".arrow")
+let name=document.querySelector("#username")
+let c=document.querySelectorAll(".c")
+let btn=document.querySelectorAll("button")
+mood.addEventListener('click', function (e) {
+    e.preventDefault()
+    document.body.classList.toggle("dark")
+    if (document.body.classList.contains("dark")) {
+        logoimg.src = "img/logodark.webp"
+        h.style.background = "#343230"
+        h.style.boxShadow = "0 2px 20px rgba(255, 255, 255, .5)"
+        name.style.color="white"
+        arrow.style.boxShadow = "0 2px 15px rgba(255, 255, 255, .5)"
+        mood.style.boxShadow = "0 2px 15px rgba(255, 255, 255, .5)"
+        c.forEach((el)=>{
+            el.style.boxShadow="1px 4px 15px rgba(255, 255, 255, .3)"
+        })
+        btn.forEach((b)=>{
+            b.style.boxShadow="0 2px 10px rgba(255, 255, 255, .3)"
+        })
+    }
+    else {
+        logoimg.src = "img/images.png"
+        h.style.background = "#FCF5EF"
+        h.style.boxShadow = "1 2px 10px rgba(0, 0, 0, .1)"
+        name.style.color="black"    
+        arrow.style.boxShadow = "0 2px 10px rgba(0, 0, 0, .1)"
+        mood.style.boxShadow = "0 2px 10px rgba(0, 0, 0, .1)"
+        c.forEach((el)=>{
+            el.style.boxShadow="1px 4px 15px rgba(0, 0, 0, .1)"
+        })
+        btn.forEach((b)=>{
+            b.style.boxShadow="0 2px 10px rgba(0, 0, 0, .1)"
+        })
+    }
+    mood.classList.toggle("fa-sun")
+    mood.classList.toggle("fa-moon")
+})
+arrow.addEventListener('click', function (e) {
+    e.preventDefault()
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+})
+window.addEventListener('scroll', function () {
+    if (window.scrollY >= 300) {
+        arrow.style.display = "block"
+        arrow.style.animation = "fadeIn 1s"
+        arrow.style.transition = "all 4s ease-in-out"
+    }
+    else {
+        arrow.style.display = "none"
+        arrow.style.transition = "all 4s ease-in-out"
+    }
+})
