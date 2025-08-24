@@ -129,7 +129,7 @@ header .btn {
 #username {
     margin-right: 5px;
     text-decoration: underline;
-    width: 130px;
+    width: 150px;
     color: #000;
 }
 
@@ -489,9 +489,10 @@ header .btn {
 
     header .userinfo {
         width: 100%;
-        display: flex;
+        
         /* background-color: blue; */
         justify-content: space-between;
+        display: none;
     }
 
     .parent .inputs select {

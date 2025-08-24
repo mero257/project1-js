@@ -275,6 +275,7 @@ function origin(c, id) {
 function add(button, id, clicked) {
     if (localStorage.getItem("email")) {
         let item = details.find(el => el.id === id);
+        let c = button.closest(".c")
         if (!item.clicked) {
             num.innerHTML++
             button.style.width = "160px"
@@ -283,6 +284,12 @@ function add(button, id, clicked) {
             button.innerHTML = "Remove From Cart "
             button.style.border = "2px solid #7743DB"
             item.clicked = true;
+            if (body.classList.contains("dark")) {
+                c.style.boxShadow = "0 2px 10px rgba(255, 255, 255, .3)"
+            }
+            else {
+                c.style.boxShadow = "0 2px 10px rgba(0, 0, 0, .1)"
+            }
         }
         else {
             num.innerHTML--
@@ -292,22 +299,22 @@ function add(button, id, clicked) {
             button.innerHTML = "Add To Cart "
             button.style.border = "none"
             item.clicked = false;
+            if (body.classList.contains("dark")) {
+                c.style.boxShadow = "0 2px 10px rgba(255, 255, 255, .3)"
+            }
+            else {
+                c.style.boxShadow = "0 2px 10px rgba(0, 0, 0, .1)"
+            }
         }
-        let c = button.closest(".c")
-        if(body.classList.contains("dark")){
-            c.style.boxShadow = "0 2px 10px rgba(255, 255, 255, .3)"
-        }
-        else
-        {
-            c.style.boxShadow = "0 2px 10px rgba(0, 0, 0, .1)"
-        }
-
+        
         c.style.boxShadow = "none"
+        //   
         c.style.transform = "translateY(-5px)"
         setTimeout(() => {
             c.style.boxShadow = "1px 4px 15px  rgba(0, 0, 0, .1)"
             c.style.transform = "translateY(-7px)"
         }, 200)
+
     }
     else {
         setTimeout(() => {
@@ -336,13 +343,13 @@ function addtofav(i, id, clicked) {
     }
 }
 
-let h=document.querySelector(".header")
+let h = document.querySelector(".header")
 let logoimg = document.querySelector(".logoimg")
 let mood = document.querySelector(".mood")
 let arrow = document.querySelector(".arrow")
-let name=document.querySelector("#username")
-let c=document.querySelectorAll(".c")
-let btn=document.querySelectorAll("button")
+let name = document.querySelector("#username")
+let c = document.querySelectorAll(".c")
+let btn = document.querySelectorAll("button")
 mood.addEventListener('click', function (e) {
     e.preventDefault()
     document.body.classList.toggle("dark")
@@ -350,28 +357,28 @@ mood.addEventListener('click', function (e) {
         logoimg.src = "img/logodark.webp"
         h.style.background = "#343230"
         h.style.boxShadow = "0 2px 20px rgba(255, 255, 255, .5)"
-        name.style.color="white"
+        name.style.color = "white"
         arrow.style.boxShadow = "0 2px 15px rgba(255, 255, 255, .5)"
         mood.style.boxShadow = "0 2px 15px rgba(255, 255, 255, .5)"
-        c.forEach((el)=>{
-            el.style.boxShadow="1px 4px 15px rgba(255, 255, 255, .3)"
+        c.forEach((el) => {
+            el.style.boxShadow = "1px 4px 15px rgba(255, 255, 255, .3)"
         })
-        btn.forEach((b)=>{
-            b.style.boxShadow="0 2px 10px rgba(255, 255, 255, .3)"
+        btn.forEach((b) => {
+            b.style.boxShadow = "0 2px 10px rgba(255, 255, 255, .3)"
         })
     }
     else {
         logoimg.src = "img/images.png"
         h.style.background = "#FCF5EF"
         h.style.boxShadow = "1 2px 10px rgba(0, 0, 0, .1)"
-        name.style.color="black"    
+        name.style.color = "black"
         arrow.style.boxShadow = "0 2px 10px rgba(0, 0, 0, .1)"
         mood.style.boxShadow = "0 2px 10px rgba(0, 0, 0, .1)"
-        c.forEach((el)=>{
-            el.style.boxShadow="1px 4px 15px rgba(0, 0, 0, .1)"
+        c.forEach((el) => {
+            el.style.boxShadow = "1px 4px 15px rgba(0, 0, 0, .1)"
         })
-        btn.forEach((b)=>{
-            b.style.boxShadow="0 2px 10px rgba(0, 0, 0, .1)"
+        btn.forEach((b) => {
+            b.style.boxShadow = "0 2px 10px rgba(0, 0, 0, .1)"
         })
     }
     mood.classList.toggle("fa-sun")
