@@ -6,7 +6,6 @@ if (localStorage.getItem("firstname")) {
     info.style.display = "flex"
     userdata.innerHTML = localStorage.getItem("firstname").toLocaleUpperCase() + " " + localStorage.getItem("secname").toLocaleUpperCase()
 }
-
 let icon = document.querySelector(".icon-shopping")
 let num = document.querySelector("#numOfAdded")
 icon.addEventListener('mouseenter', function (e) {
@@ -17,7 +16,6 @@ icon.addEventListener('mouseleave', function (e) {
     e.preventDefault()
     num.style.transform = "translate(9px,-13px)"
 })
-
 icon.addEventListener('click', function (e) {
     e.preventDefault()
     let carts = document.querySelector(".carts_products")
@@ -32,6 +30,20 @@ icon.addEventListener('click', function (e) {
         carts.style.transition = "all 0.5s ease-in-out"
     }
 })
+
+
+
+
+let link=document.querySelector(".view")
+link.addEventListener('click',function(e){
+    e.preventDefault()
+setTimeout(()=>{
+    window.location="cartproducts.html"
+},100)
+    
+})
+
+
 
 let totalproducts = document.querySelector(".cards")
 let details = [
@@ -228,12 +240,7 @@ let details = [
         clicked: false
     },
 ]
-
-
-
-
 ///////////////////////////////////////////////////////////////////////////// display items///////////////////////////////////////////////////////////
-
 function drawitems(items = details) {
     let x = items.map((item) => {
         return `
@@ -305,6 +312,7 @@ function origin(c, id) {
 
 ///////////////////////////////////////////////////////////////////////////// add to cart and fav///////////////////////////////////////////////////////////
 let allProducts = document.querySelector(".showc")
+let store=[]
 function showcart(id) {
     let choice = details.find((el) => el.id === id)
     let div = document.querySelector(".noitems")
@@ -312,10 +320,8 @@ function showcart(id) {
         div.style.display = "block"
     }
     else {
-
         div.style.display = "none"
     }
-
     allProducts.innerHTML += `
     <div class="showProduct " data-id="${choice.id}">
     <div class="nameandprice">
@@ -329,6 +335,8 @@ function showcart(id) {
     </div>
     </div>
     `
+    store=[...store,choice]
+    localStorage.setItem("product",JSON.stringify(store))
 }
 
 let div = document.querySelector(".noitems")
@@ -336,9 +344,9 @@ if (num.innerHTML.trim() === "0") {
     div.style.display = "block"
 }
 else {
-
     div.style.display = "none"
 }
+
 
 function add(button, id, clicked) {
     if (localStorage.getItem("email")) {
@@ -398,7 +406,6 @@ function add(button, id, clicked) {
             else {
                 c.style.boxShadow = "1px 4px 15px rgba(0, 0, 0, .1)"
             }
-            // c.style.boxShadow = "1px 4px 15px  rgba(0, 0, 0, .1)"
             c.style.transform = "translateY(-7px)"
         }, 90)
     }
@@ -407,8 +414,11 @@ function add(button, id, clicked) {
             window.location = "reg.html"
         }, 100)
     }
-    // عاوزه اغير حاجه لما يجي يضغط و يلاقي اني ضغطت قبل كده اصلا 
 }
+
+
+
+
 function addtofav(i, id, clicked) {
     if (localStorage.getItem("email")) {
         let item = details.find(el => el.id === id)
@@ -433,6 +443,8 @@ function addtofav(i, id, clicked) {
     }
 }
 
+
+
 ///////////////////////////////////////////////////////////////////////////// add to cart and fav///////////////////////////////////////////////////////////
 
 
@@ -453,7 +465,6 @@ function pls(i, id, clicked) {
     span.innerHTML = "$" + total
     let numcarts = document.querySelector("#numOfAdded")
     numcarts.innerHTML++
-
 }
 function mins(i, id, clicked) {
     let span = i.previousElementSibling
@@ -509,7 +520,6 @@ let arrow = document.querySelector(".arrow")
 let name = document.querySelector("#username")
 let c = document.querySelectorAll(".c")
 let btn = document.querySelectorAll("button")
-
 mood.addEventListener('click', function (e) {
     e.preventDefault()
     let div = document.querySelector(".carts_products")
@@ -587,15 +597,11 @@ window.addEventListener('scroll', function () {
         arrow.style.transition = "all 4s ease-in-out"
     }
 })
-
-
 /////////////////////////////////////////////////////////////////////////////mood and scroll///////////////////////////////////////////////////////////
 
 
 /////////////////////////////////////////////////////////////////////////////logout////////////////////////////////////////////////////////////////
-
 let logout = document.querySelector(".btn")
-
 logout.addEventListener('click', function (e) {
     e.preventDefault()
     let x=confirm("Are you sure to logout?")
@@ -608,5 +614,4 @@ logout.addEventListener('click', function (e) {
             , 100)
     }
 })
-
 /////////////////////////////////////////////////////////////////////////////logout////////////////////////////////////////////////////////////////

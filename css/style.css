@@ -168,7 +168,8 @@ header .btn {
     overflow: hidden;
     height: 600px;
     background-color: aquamarine;
-    width: 190px;
+    /* width: 190px; */
+    width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -633,4 +634,34 @@ header .btn {
         opacity: 0;
         transform: translateY(10px);
     }
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// */ 
+
+.containerofpro{
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 20px auto;
+}
+.containerofpro h1{
+    text-align: center;
+    margin:20px;
+    color: #7743DB;
+    border: 2px solid #7743DB;
+    display: inline;
+}
+.containerofpro .myPro{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 90%;
+    margin-bottom: 30px;
+    background-color: red;
+    padding: 20px;
+    box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
 }

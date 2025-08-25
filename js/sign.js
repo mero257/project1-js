@@ -5,7 +5,7 @@ let getemail = localStorage.getItem("email")
 let getpassword = localStorage.getItem("password")
 let reg = document.querySelector("#reg")
 
-
+ 
 btn.addEventListener('click', function (e) {
     e.preventDefault()
     if (getemail == null && getpassword == null) {

@@ -5,37 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Register</title>
+    <title>Products</title>
 </head>
 <body>
-    <header>
+    
+    <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="img/images.png" alt="">
+                <img src="img/images.png" class="logoimg" alt="logo">
             </div>
-            
+            <div class="userinfo" id="info">
+                <a href="#" id="username">m</a>
+                <div class="iconplusdiv">
+                    <div class="budget">
+                        <i class="fa-solid fa-cart-shopping icon-shopping"></i>
+                        <span id="numOfAdded">0</span>
+                    </div>
+                    
+                    <div class="carts_products">
+                        <div class="showc">
+                            <p class="noitems">Have No Items..</p>
+                        </div>
+                        <a href="cartproducts.html" class="view">view all products</a>
+                    </div>
+                </div>
+                <button class="btn">Logout</button>
+            </div>
         </div>
     </header>
-    <div class="sec_form">
-        <div class="form">
-            <h1>Register</h1>
-            <form id="regForm">
-                <label for="name">First Name</label>
-                <input type="text" id="name1" placeholder="Enter First Name" required>
-                <label for="name">Last Name</label>
-                <input type="text" id="name2" placeholder="Enter Last Name" required>
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter Email" required>
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter Password" required>
-                <button type="submit" id="btn">Register</button>
-            </form>
-            <p class="message">Already registered? <a href="sign.html" target="_blank">Sign In</a></p>
+    
+    <div class="myProductsAndFav">
+        <div class="containerofpro">
+            <h1>My Products</h1>
+            <div class="myPro">
+            </div>
         </div>
+        <div class="fav">
+            <div class="favPro">
+            </div>
     </div>
-
-
-
-    <script src="js/reg.js"></script>
+    </div>
+    
+    <script src="js/prod.js"></script>
 </body>
 </html>
